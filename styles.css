@@ -1,57 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-*{
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-#title{
-    text-align: center;
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-#formContainer{
-    display:flex;
-    justify-content: center;
+#title {
+  text-align: center;
 }
 
-#promptInput{
-    width:500px;
-    height:250px;
-    margin-top: 15px;  
-}
-#formBtns{
-    text-align: right;
-    margin-top: 15px;
+#formContainer {
+  display: flex;
+  justify-content: center;
 }
 
-#submitBtn{
-    background-color:#0000ff;
-    color:white;
-    border-style: none;
-    padding: 10px;
-    cursor:pointer;
-    border-radius: 5px;
+#promptInput {
+  width: 500px;
+  height: 250px;
+  margin-top: 15px;
 }
 
-#clearBtn{
-    background-color: #ff0000;
-    color:white;
-    cursor:pointer;
-    border-style:none;
-    padding:10px;
-    border-radius: 5px;
-}
-#responseContainer{
-    display:flex;
-    flex-direction:column-reverse;
+#formBtns {
+  text-align: right;
+  margin-top: 15px;
 }
 
-#responseCard{
-   border: 1px solid black;
-   width: 500px;
-   font-size: 15px;
-   margin:0 auto;
-   margin-top: 30px;
-   padding:20px;
-   border-radius: 10px;
+#submitBtn {
+  background-color: #0000ff;
+  color: white;
+  border-style: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#clearBtn {
+  background-color: #ff0000;
+  color: white;
+  cursor: pointer;
+  border-style: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#responseContainer {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#responseCard {
+  border: 1px solid black;
+  width: 500px;
+  font-size: 15px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  top: 0;
+  transition: top ease 0.5s;
+}
+
+#responseCard:hover {
+  top: -5px;
+  box-shadow: 0 0 4px #515151;
+}
+
+#engineSelection {
+  text-align: center;
+  margin-bottom: 40px;
 }

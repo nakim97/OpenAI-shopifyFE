@@ -10,6 +10,16 @@
 <body>
     <h1 id="title"> Fun with AI </h1>
 
+    <div id="engineSelection">
+        <label for="engine">Choose an Engine:</label>
+        <select name="engine" id="engine" onchange="changeEngine()">
+            <option value="Curie" id="curie">Curie</option>
+            <option value="Davinci" id="davinci">Davinci</option>
+            <option value="Ada" id="ada">Ada</option>
+            <option value="Babbage" id="babbage">Babbage</option>
+        </select>
+    </div>
+
     <div id="formContainer">
         <form id="promptForm">
             <label for="promptInput"> Enter prompt </label>

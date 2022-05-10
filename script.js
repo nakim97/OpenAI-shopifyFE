@@ -1,6 +1,6 @@
 const query = document.getElementById("promptInput");
 const responseContainer = document.getElementById("responseContainer");
-
+let engine = 'text-curie-001';
 
 document.getElementById("submitBtn").addEventListener("click", function(e){
     e.preventDefault();
@@ -12,6 +12,23 @@ document.getElementById("clearBtn").addEventListener("click", function(e){
     query.value = '';
 })
 
+function changeEngine(){
+    responseContainer.innerHTML = "";
+    query.value = "";
+    if(document.getElementById('engine').value == 'Davinci'){
+        engine = 'text-davinci-002';
+    };
+    if(document.getElementById('engine').value == 'Curie'){
+        engine = 'text-curie-001';
+    };
+    if(document.getElementById('engine').value == 'Ada'){
+        engine = 'text-ada-001';
+    };
+    if(document.getElementById('engine').value == 'Babbage'){
+        engine = 'text-babbage-001';
+    };
+};
+
 function fetchPrompt(){
     const data = {
         prompt: query.value,
@@ -22,7 +39,7 @@ function fetchPrompt(){
         presence_penalty: 0.0,
     };
     
-    fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+    fetch(`https://api.openai.com/v1/engines/${engine}/completions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -37,7 +54,6 @@ function fetchPrompt(){
     .catch((error) => {
         console.error(error);
     });
-
 }
 
 function displayResponse(data){
