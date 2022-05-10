@@ -1,9 +1,15 @@
 const query = document.getElementById("promptInput");
 const responseContainer = document.getElementById("responseContainer");
 
+
 document.getElementById("submitBtn").addEventListener("click", function(e){
     e.preventDefault();
     fetchPrompt();
+})
+
+document.getElementById("clearBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    query.value = '';
 })
 
 function fetchPrompt(){
@@ -31,12 +37,13 @@ function fetchPrompt(){
     .catch((error) => {
         console.error(error);
     });
+
 }
 
 function displayResponse(data){
     responseContainer.innerHTML += `
     <div id="responseCard">
-      <h3 id = "title"> Prompt: ${query.value}</h3>
+      <h3 id = "promptTitle"> Prompt: ${query.value}</h3>
       <h3 id = "responseResult"> Response: ${data.choices[0].text}</h3>
     </div>
    `
