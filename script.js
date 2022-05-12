@@ -1,17 +1,26 @@
-const query = document.getElementById("promptInput");
+// global variables 
+let query = document.getElementById("promptInput");
 const responseContainer = document.getElementById("responseContainer");
 let engine = 'text-curie-001';
 
+// event listeners for buttons
 document.getElementById("submitBtn").addEventListener("click", function(e){
     e.preventDefault();
     fetchPrompt();
-})
+});
 
 document.getElementById("clearBtn").addEventListener("click", function(e){
     e.preventDefault();
-    query.value = '';
-})
+    let queryVar= query.toString().replace(query, "");
+    query.value = queryVar;
+});
 
+document.getElementById("randomBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    fetchWords();
+});
+
+// function to change Engine Selection
 function changeEngine(){
     responseContainer.innerHTML = "";
     query.value = "";
@@ -29,6 +38,7 @@ function changeEngine(){
     };
 };
 
+// function to fetch data responses from Open AI API
 function fetchPrompt(){
     const data = {
         prompt: query.value,
@@ -52,10 +62,11 @@ function fetchPrompt(){
         return displayResponse(data);
     })
     .catch((error) => {
-        console.error(error);
+        console.log(error);
     });
-}
+};
 
+// function to display responses fetched from Open AI API
 function displayResponse(data){
     responseContainer.innerHTML += `
     <div id="responseCard">
@@ -64,5 +75,26 @@ function displayResponse(data){
       <h3 id = "responseResult"> Response: ${data.choices[0].text}</h3>
     </div>
    `
+};
+
+// function to fetch words from word list provided by rhdzmota
+function fetchWords(){
+      fetch("https://rhdzmota.com/files/wordle.json")
+      .then(response => {
+        return response.text()
+      })
+      .then((data) => {
+        wordRandomizer(JSON.parse(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+};
+
+// helper function to randomize words from word list and display 
+function wordRandomizer(data){
+    var randomWord = data[Math.floor((Math.random() * data.length))];
+    let randomVar= query.toString().replace(query, randomWord);
+    query.value = randomVar;
 };
 

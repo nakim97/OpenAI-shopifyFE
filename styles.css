@@ -21,9 +21,20 @@
 }
 
 #formBtns {
-  text-align: right;
   margin-top: 15px;
   margin-bottom: 30px;
+}
+
+
+#randomBtn {
+  text-align: left;
+  margin-bottom: 30px;
+  cursor: pointer;
+  border-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  color:white;
+  background-color: #1db954;
 }
 
 #submitBtn {
@@ -33,6 +44,8 @@
   padding: 10px;
   cursor: pointer;
   border-radius: 5px;
+  float:right;
+  margin-right: 10px;
 }
 
 #clearBtn {
@@ -41,6 +54,7 @@
   border-style: none;
   padding: 10px;
   border-radius: 5px;
+  float: right;
 }
 
 #responseContainer {
@@ -70,7 +84,6 @@
   text-align: center;
   margin-bottom: 40px;
 }
-
 
 #removeBtn{
   color:black;
