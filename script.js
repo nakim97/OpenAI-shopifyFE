@@ -1,8 +1,10 @@
 // global variables 
+import {API_KEY} from './apikey.js';
 let query = document.getElementById("promptInput");
 const responseContainer = document.getElementById("responseContainer");
+const engineSelector = document.getElementById("engineSelector");
 let engine = 'text-curie-001';
-import {API_KEY} from './apikey.js';
+
 
 // event listeners for buttons
 document.getElementById("submitBtn").addEventListener("click", function(e){
@@ -21,18 +23,11 @@ document.getElementById("randomBtn").addEventListener("click", function(e){
     fetchWords();
 });
 
-
-// function to fetch data responses from Open AI API
-function fetchPrompt(){
-    const data = {
-        prompt: query.value,
-        temperature: 0.5,
-        max_tokens: 64,
-        top_p: 1.0,
-        frequency_penalty: 0.0,
-        presence_penalty: 0.0,
-    };
-    
+// event listener function to change engine choice
+engineSelector.addEventListener("change", function(e){
+    e.preventDefault();
+    responseContainer.innerHTML = "";
+    query.value = "";
     if(document.getElementById('engine').value == 'Davinci'){
         engine = 'text-davinci-002';
     };
@@ -46,6 +41,18 @@ function fetchPrompt(){
         engine = 'text-babbage-001';
     };
 
+});
+
+// function to fetch data responses from Open AI API
+function fetchPrompt(){
+    const data = {
+        prompt: query.value,
+        temperature: 0.5,
+        max_tokens: 64,
+        top_p: 1.0,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.0,
+    };
     fetch(`https://api.openai.com/v1/engines/${engine}/completions`, {
         method: "POST",
         headers: {
