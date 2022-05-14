@@ -2,6 +2,7 @@
 let query = document.getElementById("promptInput");
 const responseContainer = document.getElementById("responseContainer");
 let engine = 'text-curie-001';
+import {API_KEY} from './apikey.js';
 
 // event listeners for buttons
 document.getElementById("submitBtn").addEventListener("click", function(e){
@@ -20,23 +21,6 @@ document.getElementById("randomBtn").addEventListener("click", function(e){
     fetchWords();
 });
 
-// function to change Engine Selection
-function changeEngine(){
-    responseContainer.innerHTML = "";
-    query.value = "";
-    if(document.getElementById('engine').value == 'Davinci'){
-        engine = 'text-davinci-002';
-    };
-    if(document.getElementById('engine').value == 'Curie'){
-        engine = 'text-curie-001';
-    };
-    if(document.getElementById('engine').value == 'Ada'){
-        engine = 'text-ada-001';
-    };
-    if(document.getElementById('engine').value == 'Babbage'){
-        engine = 'text-babbage-001';
-    };
-};
 
 // function to fetch data responses from Open AI API
 function fetchPrompt(){
@@ -49,11 +33,24 @@ function fetchPrompt(){
         presence_penalty: 0.0,
     };
     
+    if(document.getElementById('engine').value == 'Davinci'){
+        engine = 'text-davinci-002';
+    };
+    if(document.getElementById('engine').value == 'Curie'){
+        engine = 'text-curie-001';
+    };
+    if(document.getElementById('engine').value == 'Ada'){
+        engine = 'text-ada-001';
+    };
+    if(document.getElementById('engine').value == 'Babbage'){
+        engine = 'text-babbage-001';
+    };
+
     fetch(`https://api.openai.com/v1/engines/${engine}/completions`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer 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`
+            Authorization: `Bearer ${API_KEY}`
         },
         body: JSON.stringify(data),
     })
