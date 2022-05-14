@@ -105,8 +105,10 @@
 
 #promptTitle, #responseResult{
   font-weight:lighter;
+  font-size: 15px;
 }
 
 #promptName, #responseName{
   font-weight: bold;
+  font-size: 20px;
 }
