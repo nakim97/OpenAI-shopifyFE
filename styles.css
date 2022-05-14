@@ -9,6 +9,12 @@
   text-align: center;
 }
 
+#blurb{
+  text-align: center;
+  font-size: 15px;
+  font-weight:normal;
+}
+
 #formContainer {
   display: flex;
   justify-content: center;
@@ -73,6 +79,7 @@
   position: relative;
   top: 0;
   transition: top ease 0.5s;
+  word-wrap: break-word;
 }
 
 #responseCard:hover {
