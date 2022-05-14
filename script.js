@@ -75,8 +75,8 @@ function displayResponse(data){
     responseContainer.innerHTML += `
     <div id="responseCard">
       <button id="removeBtn" onclick="return this.parentNode.remove()"> x </button>
-      <h3 id = "promptTitle"> Prompt: ${query.value}</h3>
-      <h3 id = "responseResult"> Response: ${data.choices[0].text}</h3>
+      <h3 id = "promptTitle"> <span id="promptName"> Prompt: </span> ${query.value}</h3>
+      <h3 id = "responseResult"> <span id="responseName"> Response: </span> ${data.choices[0].text}</h3>
     </div>
    `
 };

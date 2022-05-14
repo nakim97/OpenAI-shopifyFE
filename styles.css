@@ -102,3 +102,11 @@
   font-size: 20px;
   margin-bottom: 10px;
 }
+
+#promptTitle, #responseResult{
+  font-weight:lighter;
+}
+
+#promptName, #responseName{
+  font-weight: bold;
+}
